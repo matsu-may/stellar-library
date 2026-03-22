@@ -52,24 +52,30 @@ const Home: React.FC = () => {
 
 			{config && (
 				<section className={styles.stats}>
-					<Card className={styles.statCard}>
-						<span className={styles.statValue}>
-							{(Number(config.membership_fee) / 1e7).toFixed(0)} XLM
-						</span>
-						<span className={styles.statLabel}>Membership Fee</span>
-					</Card>
-					<Card className={styles.statCard}>
-						<span className={styles.statValue}>
-							{config.max_books_per_member}
-						</span>
-						<span className={styles.statLabel}>Books per Member</span>
-					</Card>
-					<Card className={styles.statCard}>
-						<span className={styles.statValue}>
-							{Math.round((config.loan_duration_ledgers * 5) / 86400)}
-						</span>
-						<span className={styles.statLabel}>Loan Days</span>
-					</Card>
+					<div className={styles.statCard}>
+						<Card>
+							<span className={styles.statValue}>
+								{(Number(config.membership_fee) / 1e7).toFixed(0)} XLM
+							</span>
+							<span className={styles.statLabel}>Membership Fee</span>
+						</Card>
+					</div>
+					<div className={styles.statCard}>
+						<Card>
+							<span className={styles.statValue}>
+								{config.max_books_per_member}
+							</span>
+							<span className={styles.statLabel}>Books per Member</span>
+						</Card>
+					</div>
+					<div className={styles.statCard}>
+						<Card>
+							<span className={styles.statValue}>
+								{Math.round((config.loan_duration_ledgers * 5) / 86400)}
+							</span>
+							<span className={styles.statLabel}>Loan Days</span>
+						</Card>
+					</div>
 				</section>
 			)}
 
@@ -89,11 +95,13 @@ const Home: React.FC = () => {
 						))}
 					</div>
 				) : (
-					<Card style={{ textAlign: "center", padding: "2rem" }}>
-						<p style={{ color: "var(--sds-clr-gray-08)" }}>
-							No books in the catalog yet.
-						</p>
-					</Card>
+					<div style={{ textAlign: "center", padding: "2rem" }}>
+						<Card>
+							<p style={{ color: "var(--sds-clr-gray-08)" }}>
+								No books in the catalog yet.
+							</p>
+						</Card>
+					</div>
 				)}
 				{(books as BookData[]).length > 0 && (
 					<div style={{ textAlign: "center", marginTop: "1rem" }}>
@@ -110,30 +118,36 @@ const Home: React.FC = () => {
 			<section className={styles.howItWorks}>
 				<h2>How It Works</h2>
 				<div className={styles.steps}>
-					<Card className={styles.step}>
-						<div className={styles.stepIcon}>
-							<Icon.Wallet04 size="lg" />
-						</div>
-						<h3>1. Connect Wallet</h3>
-						<p>Connect your Stellar wallet to interact with the library.</p>
-					</Card>
-					<Card className={styles.step}>
-						<div className={styles.stepIcon}>
-							<Icon.UserPlus01 size="lg" />
-						</div>
-						<h3>2. Register</h3>
-						<p>Pay a one-time membership fee to become a library member.</p>
-					</Card>
-					<Card className={styles.step}>
-						<div className={styles.stepIcon}>
-							<Icon.BookOpen01 size="lg" />
-						</div>
-						<h3>3. Borrow Books</h3>
-						<p>
-							Browse the catalog and borrow up to{" "}
-							{config?.max_books_per_member ?? 3} books at a time.
-						</p>
-					</Card>
+					<div className={styles.step}>
+						<Card>
+							<div className={styles.stepIcon}>
+								<Icon.Wallet04 size="lg" />
+							</div>
+							<h3>1. Connect Wallet</h3>
+							<p>Connect your Stellar wallet to interact with the library.</p>
+						</Card>
+					</div>
+					<div className={styles.step}>
+						<Card>
+							<div className={styles.stepIcon}>
+								<Icon.UserPlus01 size="lg" />
+							</div>
+							<h3>2. Register</h3>
+							<p>Pay a one-time membership fee to become a library member.</p>
+						</Card>
+					</div>
+					<div className={styles.step}>
+						<Card>
+							<div className={styles.stepIcon}>
+								<Icon.BookOpen01 size="lg" />
+							</div>
+							<h3>3. Borrow Books</h3>
+							<p>
+								Browse the catalog and borrow up to{" "}
+								{config?.max_books_per_member ?? 3} books at a time.
+							</p>
+						</Card>
+					</div>
 				</div>
 			</section>
 		</div>

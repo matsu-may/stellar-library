@@ -175,10 +175,12 @@ const MyLibrary: React.FC = () => {
 		<div className={styles.MyLibrary}>
 			<h1>My Library</h1>
 
-			<Card className={styles.status}>
-				<Icon.CheckCircle size="md" />
-				<span>Active Member</span>
-			</Card>
+			<div className={styles.status}>
+				<Card>
+					<Icon.CheckCircle size="md" />
+					<span>Active Member</span>
+				</Card>
+			</div>
 
 			<h2>Borrowed Books ({borrowedIds.length})</h2>
 
@@ -203,35 +205,37 @@ const MyLibrary: React.FC = () => {
 
 			<div className={styles.borrowList}>
 				{borrowDetails.map(({ book, borrow }) => (
-					<Card key={borrow.book_id} className={styles.borrowCard}>
-						<div className={styles.borrowInfo}>
-							<h3>{book.title}</h3>
-							<p>{book.author}</p>
-							{config && currentLedger && (
-								<LateFeeDisplay
-									dueAt={borrow.due_at}
-									currentLedger={currentLedger}
-									lateFeePerLedger={
-										config.late_fee_per_ledger as unknown as bigint
-									}
-								/>
-							)}
-						</div>
-						<div className={styles.borrowActions}>
-							{!borrow.renewed &&
-								currentLedger &&
-								currentLedger <= borrow.due_at && (
-									<Button
-										variant="tertiary"
-										size="sm"
-										onClick={() => void handleRenew(borrow.book_id)}
-									>
-										Renew
-									</Button>
+					<div key={borrow.book_id} className={styles.borrowCard}>
+						<Card>
+							<div className={styles.borrowInfo}>
+								<h3>{book.title}</h3>
+								<p>{book.author}</p>
+								{config && currentLedger && (
+									<LateFeeDisplay
+										dueAt={borrow.due_at}
+										currentLedger={currentLedger}
+										lateFeePerLedger={
+											config.late_fee_per_ledger as unknown as bigint
+										}
+									/>
 								)}
-							<ReturnButton bookId={borrow.book_id} onReturn={handleReturn} />
-						</div>
-					</Card>
+							</div>
+							<div className={styles.borrowActions}>
+								{!borrow.renewed &&
+									currentLedger &&
+									currentLedger <= borrow.due_at && (
+										<Button
+											variant="tertiary"
+											size="sm"
+											onClick={() => void handleRenew(borrow.book_id)}
+										>
+											Renew
+										</Button>
+									)}
+								<ReturnButton bookId={borrow.book_id} onReturn={handleReturn} />
+							</div>
+						</Card>
+					</div>
 				))}
 			</div>
 
