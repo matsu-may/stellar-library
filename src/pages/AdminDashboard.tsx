@@ -184,9 +184,11 @@ const AdminDashboard: React.FC = () => {
 		return (
 			<div className={styles.Admin}>
 				<h1>Admin Dashboard</h1>
-				<Card style={{ textAlign: "center", padding: "2rem" }}>
-					<p>Admin access required. Your wallet is not the library admin.</p>
-				</Card>
+				<div style={{ textAlign: "center", padding: "2rem" }}>
+					<Card>
+						<p>Admin access required. Your wallet is not the library admin.</p>
+					</Card>
+				</div>
 			</div>
 		)
 	}
@@ -196,26 +198,34 @@ const AdminDashboard: React.FC = () => {
 			<h1>Admin Dashboard</h1>
 
 			<div className={styles.statsGrid}>
-				<Card className={styles.statCard}>
-					<span className={styles.statValue}>{allBooks.length}</span>
-					<span className={styles.statLabel}>Total Books</span>
-				</Card>
-				<Card className={styles.statCard}>
-					<span className={styles.statValue}>{totalCopiesOut}</span>
-					<span className={styles.statLabel}>Copies Borrowed</span>
-				</Card>
-				<Card className={styles.statCard}>
-					<span className={styles.statValue}>
-						{allBooks.reduce((sum, b) => sum + b.total_copies, 0)}
-					</span>
-					<span className={styles.statLabel}>Total Copies</span>
-				</Card>
-				<Card className={styles.statCard}>
-					<span className={styles.statValue}>
-						{(members as { address: string }[]).length}
-					</span>
-					<span className={styles.statLabel}>Total Members</span>
-				</Card>
+				<div className={styles.statCard}>
+					<Card>
+						<span className={styles.statValue}>{allBooks.length}</span>
+						<span className={styles.statLabel}>Total Books</span>
+					</Card>
+				</div>
+				<div className={styles.statCard}>
+					<Card>
+						<span className={styles.statValue}>{totalCopiesOut}</span>
+						<span className={styles.statLabel}>Copies Borrowed</span>
+					</Card>
+				</div>
+				<div className={styles.statCard}>
+					<Card>
+						<span className={styles.statValue}>
+							{allBooks.reduce((sum, b) => sum + b.total_copies, 0)}
+						</span>
+						<span className={styles.statLabel}>Total Copies</span>
+					</Card>
+				</div>
+				<div className={styles.statCard}>
+					<Card>
+						<span className={styles.statValue}>
+							{(members as { address: string }[]).length}
+						</span>
+						<span className={styles.statLabel}>Total Members</span>
+					</Card>
+				</div>
 			</div>
 
 			<ActivityLog />

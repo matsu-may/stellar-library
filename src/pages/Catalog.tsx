@@ -80,15 +80,17 @@ const Catalog: React.FC = () => {
 			)}
 
 			{memberCheckDone && !isMember && (
-				<Card style={{ marginBottom: "1.5rem", padding: "1rem" }}>
-					<p style={{ margin: 0 }}>
-						<Icon.InfoCircle size="sm" /> You need to{" "}
-						<a href="/my-library" className="Link Link--primary">
-							register as a member
-						</a>{" "}
-						before borrowing books.
-					</p>
-				</Card>
+				<div style={{ marginBottom: "1.5rem", padding: "1rem" }}>
+					<Card>
+						<p style={{ margin: 0 }}>
+							<Icon.InfoCircle size="sm" /> You need to{" "}
+							<a href="/my-library" className="Link Link--primary">
+								register as a member
+							</a>{" "}
+							before borrowing books.
+						</p>
+					</Card>
+				</div>
 			)}
 
 			<BookSearch value={search} onChange={setSearch} />
@@ -96,16 +98,22 @@ const Catalog: React.FC = () => {
 			{isLoading && <LoadingSkeleton variant="card" count={6} />}
 
 			{isError && (
-				<Card style={{ textAlign: "center", padding: "2rem" }}>
-					<Icon.AlertTriangle
-						size="md"
-						style={{ color: "var(--sds-clr-red-09)" }}
-					/>
-					<p>Failed to load books.</p>
-					<Button variant="secondary" size="sm" onClick={() => void refetch()}>
-						Retry
-					</Button>
-				</Card>
+				<div style={{ textAlign: "center", padding: "2rem" }}>
+					<Card>
+						<Icon.AlertTriangle
+							size="md"
+							style={{ color: "var(--sds-clr-red-09)" }}
+						/>
+						<p>Failed to load books.</p>
+						<Button
+							variant="secondary"
+							size="sm"
+							onClick={() => void refetch()}
+						>
+							Retry
+						</Button>
+					</Card>
+				</div>
 			)}
 
 			{!isLoading && !isError && (

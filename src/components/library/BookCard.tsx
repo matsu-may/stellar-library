@@ -26,23 +26,25 @@ export const BookCard: React.FC<BookCardProps> = ({
 	const available = book.available_copies > 0
 
 	return (
-		<Card className={styles.BookCard}>
-			<div className={styles.header}>
-				<Icon.BookOpen01 size="md" />
-				<h3 className={styles.title}>{book.title}</h3>
-			</div>
-			<p className={styles.author}>{book.author}</p>
-			<span className={styles.genre}>{book.genre}</span>
-			<div className={styles.footer}>
-				<span className={available ? styles.available : styles.unavailable}>
-					{book.available_copies}/{book.total_copies} available
-				</span>
-				<BorrowButton
-					bookId={book.id}
-					disabled={!available || !isMember}
-					onBorrow={onBorrow}
-				/>
-			</div>
-		</Card>
+		<div className={styles.BookCard}>
+			<Card>
+				<div className={styles.header}>
+					<Icon.BookOpen01 size="md" />
+					<h3 className={styles.title}>{book.title}</h3>
+				</div>
+				<p className={styles.author}>{book.author}</p>
+				<span className={styles.genre}>{book.genre}</span>
+				<div className={styles.footer}>
+					<span className={available ? styles.available : styles.unavailable}>
+						{book.available_copies}/{book.total_copies} available
+					</span>
+					<BorrowButton
+						bookId={book.id}
+						disabled={!available || !isMember}
+						onBorrow={onBorrow}
+					/>
+				</div>
+			</Card>
+		</div>
 	)
 }

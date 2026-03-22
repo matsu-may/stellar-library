@@ -22,17 +22,23 @@ export const MembershipRegistration: React.FC<MembershipRegistrationProps> = ({
 
 	return (
 		<>
-			<Card className={styles.Registration}>
-				<Icon.UserPlus01 size="lg" />
-				<h3>Become a Member</h3>
-				<p>
-					Register as a library member to borrow books. A one-time membership
-					fee of <strong>{feeXlm} XLM</strong> is required.
-				</p>
-				<Button variant="primary" size="md" onClick={() => setShowModal(true)}>
-					Register Membership
-				</Button>
-			</Card>
+			<div className={styles.Registration}>
+				<Card>
+					<Icon.UserPlus01 size="lg" />
+					<h3>Become a Member</h3>
+					<p>
+						Register as a library member to borrow books. A one-time membership
+						fee of <strong>{feeXlm} XLM</strong> is required.
+					</p>
+					<Button
+						variant="primary"
+						size="md"
+						onClick={() => setShowModal(true)}
+					>
+						Register Membership
+					</Button>
+				</Card>
+			</div>
 
 			<RegistrationModal
 				isOpen={showModal}
