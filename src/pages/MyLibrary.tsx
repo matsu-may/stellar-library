@@ -60,13 +60,12 @@ const MyLibrary: React.FC = () => {
 				}),
 			)
 			return results
-				.filter(
-					(
-						r,
-					): r is PromiseFulfilledResult<{ book: unknown; borrow: unknown }> =>
-						r.status === "fulfilled",
-				)
-				.map((r) => r.value) as {
+				.filter((r) => r.status === "fulfilled")
+				.map(
+					(r) =>
+						(r as PromiseFulfilledResult<{ book: unknown; borrow: unknown }>)
+							.value,
+				) as {
 				book: { title: string; author: string }
 				borrow: {
 					book_id: number
@@ -111,7 +110,7 @@ const MyLibrary: React.FC = () => {
 				void queryClient.invalidateQueries({ queryKey: ["library-books"] })
 				void queryClient.invalidateQueries({ queryKey: ["library-borrows"] })
 				void queryClient.invalidateQueries({ queryKey: ["library-history"] })
-				return result as bigint
+				return result as unknown as bigint
 			} catch (err) {
 				addNotification(
 					`Return failed: ${err instanceof Error ? err.message : "Unknown error"}`,

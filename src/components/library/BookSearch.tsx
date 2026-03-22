@@ -9,7 +9,7 @@ interface BookSearchProps {
 
 export const BookSearch: React.FC<BookSearchProps> = ({ value, onChange }) => {
 	const [inputValue, setInputValue] = useState(value)
-	const timerRef = useRef<number>()
+	const timerRef = useRef<number>(undefined)
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const val = e.target.value

@@ -16,7 +16,6 @@ export function useLibraryContract() {
 		) => {
 			const tx = await library.add_book(
 				{ title, author, genre, total_copies: totalCopies },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -36,7 +35,6 @@ export function useLibraryContract() {
 		) => {
 			const tx = await library.update_book(
 				{ book_id: bookId, title, author, genre, total_copies: totalCopies },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -50,7 +48,6 @@ export function useLibraryContract() {
 		async (bookId: number) => {
 			const tx = await library.remove_book(
 				{ book_id: bookId },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -64,7 +61,6 @@ export function useLibraryContract() {
 		async (name: string, email: string) => {
 			const tx = await library.register_member(
 				{ member: address!, name, email },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -78,7 +74,6 @@ export function useLibraryContract() {
 		async (bookId: number) => {
 			const tx = await library.borrow_book(
 				{ member: address!, book_id: bookId },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -92,7 +87,6 @@ export function useLibraryContract() {
 		async (bookId: number) => {
 			const tx = await library.renew_book(
 				{ member: address!, book_id: bookId },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -105,7 +99,6 @@ export function useLibraryContract() {
 		async (bookId: number) => {
 			const tx = await library.return_book(
 				{ member: address!, book_id: bookId },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -119,7 +112,6 @@ export function useLibraryContract() {
 		async (memberAddress: string) => {
 			const tx = await library.deactivate_member(
 				{ member: memberAddress },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -133,7 +125,6 @@ export function useLibraryContract() {
 		async (memberAddress: string) => {
 			const tx = await library.reactivate_member(
 				{ member: memberAddress },
-				// @ts-expect-error publicKey is allowed
 				{ publicKey: address },
 			)
 			const { result } = await tx.signAndSend({ signTransaction })
@@ -145,11 +136,7 @@ export function useLibraryContract() {
 
 	const withdrawFees = useCallback(
 		async (amount: bigint) => {
-			const tx = await library.withdraw_fees(
-				{ amount },
-				// @ts-expect-error publicKey is allowed
-				{ publicKey: address },
-			)
+			const tx = await library.withdraw_fees({ amount }, { publicKey: address })
 			const { result } = await tx.signAndSend({ signTransaction })
 			await updateBalances()
 			return result

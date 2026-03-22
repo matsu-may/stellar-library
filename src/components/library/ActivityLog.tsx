@@ -24,7 +24,7 @@ function describeEvent(
 		const topicStr = event.topic
 			.map((t) => {
 				try {
-					return t.value().toString()
+					return t.value()?.toString() ?? "?"
 				} catch {
 					return "?"
 				}
