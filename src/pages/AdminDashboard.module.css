@@ -1,0 +1,92 @@
+.Admin {
+	max-width: calc(var(--sds-window-width-max) * 0.75);
+	margin: 0 auto;
+}
+
+.Admin h1 {
+	font-weight: normal;
+	margin-bottom: 1.5rem;
+}
+
+.Admin :global(.Card) {
+	margin-bottom: 1.5rem;
+}
+
+.statsGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.statCard {
+	text-align: center;
+	padding: 1.25rem;
+}
+
+.statValue {
+	display: block;
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: var(--sds-clr-lilac-11);
+}
+
+.statLabel {
+	display: block;
+	font-size: 0.85rem;
+	color: var(--sds-clr-gray-08);
+	margin-top: 0.25rem;
+}
+
+.bookList {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.bookRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 0;
+	border-bottom: 1px solid var(--sds-clr-gray-04);
+}
+
+.bookRow:last-child {
+	border-bottom: none;
+}
+
+.copies {
+	color: var(--sds-clr-gray-08);
+	font-size: 0.9rem;
+}
+
+.actionRow {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
+}
+
+.actionRow > div {
+	flex: 1;
+}
+
+@media (max-width: 768px) {
+	.statsGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.actionRow {
+		flex-direction: column;
+	}
+
+	.actionRow > div {
+		width: 100%;
+	}
+
+	.bookRow {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+}

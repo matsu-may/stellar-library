@@ -1,0 +1,33 @@
+.backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+.dialog {
+	background: var(--sds-clr-gray-01);
+	border-radius: 12px;
+	padding: 1.5rem;
+	max-width: 400px;
+	width: 90%;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.dialog h3 {
+	margin: 0 0 0.5rem;
+}
+
+.dialog p {
+	color: var(--sds-clr-gray-09);
+	margin: 0 0 1.5rem;
+}
+
+.actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.75rem;
+}

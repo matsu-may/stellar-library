@@ -1,0 +1,39 @@
+.Catalog {
+	max-width: calc(var(--sds-window-width-max) * 0.85);
+	margin: 0 auto;
+}
+
+.Catalog h1 {
+	font-weight: normal;
+	margin-bottom: 1.5rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.empty {
+	text-align: center;
+	color: var(--sds-clr-gray-08);
+	padding: 3rem 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}

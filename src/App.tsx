@@ -3,14 +3,20 @@ import { Routes, Route, Outlet, NavLink } from "react-router-dom"
 import styles from "./App.module.css"
 import ConnectAccount from "./components/ConnectAccount"
 import { labPrefix } from "./contracts/util"
+import AdminDashboard from "./pages/AdminDashboard"
+import Catalog from "./pages/Catalog"
 import Debug from "./pages/Debug"
 import Home from "./pages/Home"
+import MyLibrary from "./pages/MyLibrary"
 
 function App() {
 	return (
 		<Routes>
 			<Route element={<AppLayout />}>
 				<Route path="/" element={<Home />} />
+				<Route path="/catalog" element={<Catalog />} />
+				<Route path="/my-library" element={<MyLibrary />} />
+				<Route path="/admin" element={<AdminDashboard />} />
 				<Route path="/debug" element={<Debug />} />
 				<Route path="/debug/:contractName" element={<Debug />} />
 			</Route>
@@ -21,24 +27,34 @@ function App() {
 const AppLayout: React.FC = () => (
 	<div className={styles.AppLayout}>
 		<Layout.Header
-			projectId="Scaffold"
-			projectTitle="Scaffold"
+			projectId="stellar-library"
+			projectTitle="Stellar Library"
 			hasThemeSwitch={true}
 			contentCenter={
 				<>
-					<NavLink to="/debug">
+					<NavLink to="/catalog">
 						{({ isActive }) => (
 							<Button variant="tertiary" size="md" disabled={isActive}>
-								<Icon.Code02 size="md" />
-								Contract Explorer
+								<Icon.BookOpen01 size="md" />
+								Catalog
 							</Button>
 						)}
 					</NavLink>
-					<NavLink to={labPrefix()}>
-						<Button variant="tertiary" size="md">
-							<Icon.SearchMd size="md" />
-							Transaction Explorer
-						</Button>
+					<NavLink to="/my-library">
+						{({ isActive }) => (
+							<Button variant="tertiary" size="md" disabled={isActive}>
+								<Icon.File06 size="md" />
+								My Library
+							</Button>
+						)}
+					</NavLink>
+					<NavLink to="/admin">
+						{({ isActive }) => (
+							<Button variant="tertiary" size="md" disabled={isActive}>
+								<Icon.Settings01 size="md" />
+								Admin
+							</Button>
+						)}
 					</NavLink>
 				</>
 			}
@@ -55,26 +71,11 @@ const AppLayout: React.FC = () => (
 
 		<Layout.Footer>
 			<nav>
-				<a
-					href="https://github.com/theahaco/scaffold-stellar"
-					className="Link Link--secondary"
-					target="_blank"
-				>
-					<Icon.GitPullRequest size="sm" /> GitHub
-				</a>
-				<a
-					href="https://www.youtube.com/watch?v=0syGaIn3ULk&list=PLmr3tp_7-7Gjj6gn5-bBn-QTMyaWzwOU5"
-					className="Link Link--secondary"
-					target="_blank"
-				>
-					<Icon.Youtube size="sm" /> Tutorial
-				</a>
-				<a
-					href="https://scaffoldstellar.org"
-					className="Link Link--secondary"
-					target="_blank"
-				>
-					<Icon.BookOpen01 size="sm" /> View docs
+				<NavLink to="/debug" className="Link Link--secondary">
+					<Icon.Code02 size="sm" /> Contract Explorer
+				</NavLink>
+				<a href={labPrefix()} className="Link Link--secondary" target="_blank">
+					<Icon.SearchMd size="sm" /> Transaction Explorer
 				</a>
 			</nav>
 		</Layout.Footer>

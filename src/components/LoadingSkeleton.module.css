@@ -1,0 +1,72 @@
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 0.8;
+	}
+}
+
+.line {
+	background: var(--sds-clr-gray-04);
+	border-radius: 4px;
+	animation: pulse 1.5s ease-in-out infinite;
+	margin-bottom: 0.5rem;
+}
+
+.spacer {
+	height: 0.5rem;
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card {
+	background: var(--sds-clr-gray-02);
+	border-radius: 8px;
+	padding: 1.25rem;
+	border: 1px solid var(--sds-clr-gray-04);
+}
+
+.cardGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 1.5rem;
+}
+
+.listItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	background: var(--sds-clr-gray-02);
+	border-radius: 8px;
+	border: 1px solid var(--sds-clr-gray-04);
+}
+
+.listItem > div:first-child {
+	flex: 1;
+}
+
+.listGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.statsCard {
+	background: var(--sds-clr-gray-02);
+	border-radius: 8px;
+	padding: 1.25rem;
+	border: 1px solid var(--sds-clr-gray-04);
+}
+
+.statsGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 1rem;
+}

@@ -1,0 +1,21 @@
+.Registration {
+	text-align: center;
+	max-width: 400px;
+	margin: 2rem auto;
+}
+
+.Registration svg {
+	width: 2rem;
+	height: 2rem;
+	color: var(--sds-clr-lilac-09);
+	margin-bottom: 0.5rem;
+}
+
+.Registration h3 {
+	margin: 0.5rem 0;
+}
+
+.Registration p {
+	color: var(--sds-clr-gray-09);
+	margin-bottom: 1rem;
+}

@@ -42,7 +42,10 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({
 				type,
 				isVisible: true,
 			}
-			setNotifications((prev) => [...prev, newNotification])
+			setNotifications((prev) => {
+				const trimmed = prev.length >= 5 ? prev.slice(1) : prev
+				return [...trimmed, newNotification]
+			})
 
 			setTimeout(() => {
 				setNotifications(markRead(newNotification.id))
@@ -60,7 +63,7 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({
 	return (
 		<NotificationContext value={contextValue}>
 			{children}
-			<div className="notification-container">
+			<div className="notification-container" role="alert" aria-live="polite">
 				{notifications.map((notification) => (
 					<div
 						key={notification.id}
@@ -83,7 +86,7 @@ function markRead(
 	return (prev) =>
 		prev.map((notification) =>
 			notification.id === id
-				? { ...notification, isVisible: true }
+				? { ...notification, isVisible: false }
 				: notification,
 		)
 }

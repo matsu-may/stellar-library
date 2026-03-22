@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client"
 import { BrowserRouter } from "react-router-dom"
 import "./index.css"
 import App from "./App.tsx"
+import { ErrorBoundary } from "./components/ErrorBoundary.tsx"
 import { NotificationProvider } from "./providers/NotificationProvider.tsx"
 import { WalletProvider } from "./providers/WalletProvider.tsx"
 import "@stellar/design-system/build/styles.min.css"
@@ -23,7 +24,9 @@ createRoot(document.getElementById("root") as HTMLElement).render(
 			<QueryClientProvider client={queryClient}>
 				<WalletProvider>
 					<BrowserRouter>
-						<App />
+						<ErrorBoundary>
+							<App />
+						</ErrorBoundary>
 					</BrowserRouter>
 				</WalletProvider>
 			</QueryClientProvider>

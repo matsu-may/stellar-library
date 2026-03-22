@@ -1,0 +1,58 @@
+.BookCard {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.header svg {
+	color: var(--sds-clr-lilac-09);
+	width: 1.2rem;
+	height: 1.2rem;
+	flex-shrink: 0;
+}
+
+.title {
+	font-size: 1.1rem;
+	margin: 0;
+}
+
+.author {
+	color: var(--sds-clr-gray-09);
+	margin: 0;
+	font-size: 0.9rem;
+}
+
+.genre {
+	display: inline-block;
+	background: var(--sds-clr-lilac-03);
+	color: var(--sds-clr-lilac-11);
+	padding: 0.15rem 0.5rem;
+	border-radius: 4px;
+	font-size: 0.8rem;
+	width: fit-content;
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 0.5rem;
+}
+
+.available {
+	color: var(--sds-clr-green-11);
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+
+.unavailable {
+	color: var(--sds-clr-red-11);
+	font-weight: 600;
+	font-size: 0.9rem;
+}

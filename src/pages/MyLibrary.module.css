@@ -1,0 +1,109 @@
+.MyLibrary {
+	max-width: calc(var(--sds-window-width-max) * 0.75);
+	margin: 0 auto;
+}
+
+.MyLibrary h1 {
+	font-weight: normal;
+	margin-bottom: 1.5rem;
+}
+
+.MyLibrary h2 {
+	margin: 1.5rem 0 1rem;
+}
+
+.status {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1rem;
+	width: fit-content;
+}
+
+.status svg {
+	color: var(--sds-clr-green-11);
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
+.status span {
+	color: var(--sds-clr-green-11);
+	font-weight: 600;
+}
+
+.borrowList {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.borrowCard {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.borrowInfo h3 {
+	margin: 0;
+	font-size: 1rem;
+}
+
+.borrowInfo p {
+	margin: 0.25rem 0;
+	color: var(--sds-clr-gray-09);
+	font-size: 0.9rem;
+}
+
+.borrowActions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-shrink: 0;
+}
+
+.empty {
+	text-align: center;
+	color: var(--sds-clr-gray-08);
+	padding: 2rem 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.historyList {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-bottom: 2rem;
+}
+
+.historyItem {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.75rem 1rem;
+	background: var(--sds-clr-gray-02);
+	border-radius: 8px;
+	font-size: 0.9rem;
+}
+
+.historyMeta {
+	color: var(--sds-clr-green-09);
+	font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+	.borrowCard {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.borrowActions {
+		width: 100%;
+		justify-content: flex-end;
+	}
+}
