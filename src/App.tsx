@@ -1,26 +1,30 @@
 import { Button, Icon, Layout } from "@stellar/design-system"
+import { lazy, Suspense } from "react"
 import { Routes, Route, Outlet, NavLink } from "react-router-dom"
 import styles from "./App.module.css"
 import ConnectAccount from "./components/ConnectAccount"
 import { labPrefix } from "./contracts/util"
-import AdminDashboard from "./pages/AdminDashboard"
-import Catalog from "./pages/Catalog"
-import Debug from "./pages/Debug"
-import Home from "./pages/Home"
-import MyLibrary from "./pages/MyLibrary"
+
+const Home = lazy(() => import("./pages/Home"))
+const Catalog = lazy(() => import("./pages/Catalog"))
+const MyLibrary = lazy(() => import("./pages/MyLibrary"))
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"))
+const Debug = lazy(() => import("./pages/Debug"))
 
 function App() {
 	return (
-		<Routes>
-			<Route element={<AppLayout />}>
-				<Route path="/" element={<Home />} />
-				<Route path="/catalog" element={<Catalog />} />
-				<Route path="/my-library" element={<MyLibrary />} />
-				<Route path="/admin" element={<AdminDashboard />} />
-				<Route path="/debug" element={<Debug />} />
-				<Route path="/debug/:contractName" element={<Debug />} />
-			</Route>
-		</Routes>
+		<Suspense fallback={<div>Loading…</div>}>
+			<Routes>
+				<Route element={<AppLayout />}>
+					<Route path="/" element={<Home />} />
+					<Route path="/catalog" element={<Catalog />} />
+					<Route path="/my-library" element={<MyLibrary />} />
+					<Route path="/admin" element={<AdminDashboard />} />
+					<Route path="/debug" element={<Debug />} />
+					<Route path="/debug/:contractName" element={<Debug />} />
+				</Route>
+			</Routes>
+		</Suspense>
 	)
 }
 

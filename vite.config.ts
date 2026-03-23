@@ -8,6 +8,24 @@ export default defineConfig({
 	plugins: [react(), nodePolyfills({}), wasm()],
 	build: {
 		target: "esnext",
+		rollupOptions: {
+			output: {
+				manualChunks(id) {
+					if (id.includes("@stellar/stellar-sdk")) return "stellar-sdk"
+					if (id.includes("@stellar/design-system")) return "stellar-design"
+					if (id.includes("@creit.tech/stellar-wallets-kit"))
+						return "stellar-wallets"
+					if (id.includes("@theahaco/contract-explorer"))
+						return "contract-explorer"
+					if (
+						id.includes("node_modules/react/") ||
+						id.includes("node_modules/react-dom/") ||
+						id.includes("node_modules/react-router")
+					)
+						return "react"
+				},
+			},
+		},
 	},
 	optimizeDeps: {
 		exclude: ["@stellar/stellar-xdr-json"],
