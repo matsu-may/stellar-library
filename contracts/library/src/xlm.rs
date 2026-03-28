@@ -48,13 +48,10 @@ pub use xlm::*;
 mod register {
     #[allow(unused)]
     #[cfg(not(test))]
-    pub fn register(env: &soroban_sdk::Env, _admin: &soroban_sdk::Address) {
-        let balance = super::token_client(env).try_balance(&env.current_contract_address());
-        if balance.is_err() {
-            env.deployer()
-                .with_stellar_asset(super::SERIALIZED_ASSET)
-                .deploy();
-        }
+    pub fn register(_env: &soroban_sdk::Env, _admin: &soroban_sdk::Address) {
+        // No-op on real networks: the native XLM SAC is already deployed
+        // by the network itself. The SAC address is derived deterministically
+        // by `stellar_registry::import_asset!("xlm")` above.
     }
 }
 
